@@ -29,7 +29,10 @@ COPY srcs/nginx.conf /etc/nginx/sites-available/
 COPY srcs/config.inc.php /var/www/phpMyAdmin/
 COPY srcs/wp-config.php /var/www/wordpress/
 COPY srcs/run_server.sh /var/www/
+COPY srcs/autoindex.sh /var/www/
 
 RUN ln -s /etc/nginx/sites-available/nginx.conf /etc/nginx/sites-enabled/
 
-CMD bash /var/www/run_server.sh
+WORKDIR /var/www/
+
+CMD bash ./run_server.sh
